@@ -4,7 +4,6 @@ namespace StateCSharp
     {
         private readonly ICanvas _canvas;
         private MouseState _mouseState = MouseState.MouseUp;
-
         private Point _startP;
 
         public Widget(ICanvas canvas)
@@ -12,16 +11,16 @@ namespace StateCSharp
             _canvas = canvas;
         }
 
-        public void MouseMove(Point p)
+        public void MouseMove(Point point)
         {
             if (_mouseState == MouseState.MouseUp)
             {
-                _startP = p;
+                _startP = point;
             }
 
             if (_mouseState == MouseState.MouseUpWithCtrlDown)
             {
-                _startP = p;
+                _startP = point;
             }
             else if (_mouseState == MouseState.MouseDown)
             {
@@ -35,14 +34,14 @@ namespace StateCSharp
 
             if (_mouseState == MouseState.MouseDragging)
             {
-                _canvas.DrawLine(_startP, p, Colour.Red);
-                _startP = p;
+                _canvas.DrawLine(_startP, point, Colour.Red);
+                _startP = point;
             }
 
             if (_mouseState == MouseState.MouseDraggingWithCtrlDown)
             {
-                _canvas.DrawLine(_startP, p, Colour.Green);
-                _startP = p;
+                _canvas.DrawLine(_startP, point, Colour.Green);
+                _startP = point;
             }
         }
 
