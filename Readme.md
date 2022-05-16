@@ -1,12 +1,3 @@
-<style>
-label{
-    color:orange;
-}
-heading{
-    color:firebrick;
-    font-weight: bold;
-}
-</style>
 # <heading>Instructions</heading>
 
 ## <heading>Introduction</heading>
@@ -29,7 +20,7 @@ You should be able to refactor in small incremental steps, and make sure that th
 
 Create private Set/Get methods for all private data on Widget. Use these methods instead of directly accessing the private data.
 
-<label>Compile and run the tests. Commit if they pass.</label>
+**Compile and run the tests. Commit if they pass.**
 
 ## <heading>Step 2: Create a State base class</heading>
 
@@ -37,19 +28,19 @@ Create a new IState interface. This should have the same public API as Widget, e
 
 Create an implementation of IState, called something like DefaultState.
 
-<label>Compile and run the tests. Commit if they pass.</label>
+**Compile and run the tests. Commit if they pass.**
 
 ## <heading>Step 3: Move logic into States</heading>
 
 In Widget, create a member pointer to an IState, and initialise it to point to an instance of DefaultState. 
 
-<label>Compile and run the tests. Commit if they pass.</label>
+**Compile and run the tests. Commit if they pass.**
 
 Move all of the logic in the Mouse and Key functions into DefaultState. 
 
 Replace the logic in Widget with calls to the IState member.
 
-<label>As you move each function, Compile and run the tests. Commit if they pass.</label>
+**As you move each function, Compile and run the tests. Commit if they pass.**
 
 ## <heading>Step 4: Replace type code with objects</heading>
 
@@ -63,13 +54,13 @@ Change the GetState function in Widget to get the MouseState from the IState tha
 
 Change the SetState function in Widget with a function that sets the MouseState on the IState that it owns.
 
-<label>Compile and run the tests. Commit if they pass.</label>
+**Compile and run the tests. Commit if they pass.**
 
 Replace the set function with one that takes in an IState and replaces the IState member.
 
 In DefaultState, change calls that set the MouseState to instead construct a new DefaultState with the appropriate MouseState, and set the new DefaultState on the widget.
 
-<label>Compile and run the tests. Commit if they pass.</label>
+**Compile and run the tests. Commit if they pass.**
 
 ## <heading>Step 5: Create derived State classes</heading>
 
@@ -77,11 +68,11 @@ Create six implementations of IState: one for each value of MouseState. Do this 
 
 The constructors should take no argument, but should provide the relevant MouseState value to the base class.
 
-<label>Compile and run the tests. Commit if they pass.</label>
+**Compile and run the tests. Commit if they pass.**
 
 In turn, replace each of calls to construct a new IState, with calls to create one of the derived types.
 
-<label>Compile and run tests</label> after each change.
+**Compile and run tests** after each change.
 
 ## <heading>Step 6: Move logic into State classes</heading>
 
@@ -106,7 +97,7 @@ void MouseDown(Widget) {
 }
 ```
 
-<label>Compile and run tests</label> after each change.
+**Compile and run tests** after each change.
 
 Be warned that some of the conditional logic is entangled. For example, it might change the state, and then later in the same function, see if the state is now in that new state and do some more logic.
 
@@ -116,7 +107,7 @@ You should end up with the methods in DefaultState completely empty, and it shou
 
 You can now remove the MouseState enum and the MouseState member variables.
 
-<label>Compile and run the tests. Commit if they pass.</label>
+**Compile and run the tests. Commit if they pass.**
 
 ## <heading>Step 8: Consider a base class</heading>
 
@@ -130,4 +121,4 @@ This breaks the Law Of Demeter.
 
 Instead, remove the Canvas accessor, and instead provide functions on Widget such as ```DrawLine()```.
 
-<label>Admire your work :)</label>
+**Admire your work :)**
