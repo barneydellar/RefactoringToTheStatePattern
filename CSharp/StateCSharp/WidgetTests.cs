@@ -127,7 +127,7 @@ namespace StateCSharp
         }
 
         [Test]
-        public void ICanDragToMakeMultipleLines()
+        public void CanDragToMakeMultipleLines()
         {
             var c = new Mock<ICanvas>();
             Widget w = new Widget(c.Object);
@@ -149,7 +149,7 @@ namespace StateCSharp
         }
 
         [Test]
-        public void ICanPressControlAndDragToMakeMultipleGreenLines()
+        public void CanPressControlAndDragToMakeMultipleGreenLines()
         {
             var c = new Mock<ICanvas>();
             Widget w = new Widget(c.Object);
@@ -172,7 +172,7 @@ namespace StateCSharp
         }
 
         [Test]
-        public void ICanDragTwiceToMakeTwoLines()
+        public void CanDragTwiceToMakeTwoLines()
         {
             var c = new Mock<ICanvas>();
             Widget w = new Widget(c.Object);
@@ -197,7 +197,7 @@ namespace StateCSharp
         }
 
         [Test]
-        public void ICanDragTwiceWithControlDownToMakeTwoGreenLines()
+        public void CanDragTwiceWithControlDownToMakeTwoGreenLines()
         {
             var c = new Mock<ICanvas>();
             Widget w = new Widget(c.Object);
@@ -392,7 +392,7 @@ namespace StateCSharp
         }
 
         [Test]
-        public void ICanCreateLotsOfPointsAndLines()
+        public void CanCreateLotsOfPointsAndLines()
         {
             var c = new Mock<ICanvas>();
             Widget w = new Widget(c.Object);
