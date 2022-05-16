@@ -9,18 +9,18 @@ namespace StateCSharp
         [Test]
         public void AWidgetCanBeCreated()
         {
-            MockCanvas c = new MockCanvas();
-            Widget w = new Widget(c);
+            var c = new MockCanvas();
+            var w = new Widget(c);
         }
 
         [Test]
         public void AWidgetCanDrawARedLine()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point start = new Point(10, 10);
-            Point end = new Point(20, 20);
+            var start = new Point(10, 10);
+            var end = new Point(20, 20);
 
             w.MouseMove(start);
             w.MouseDown();
@@ -33,10 +33,10 @@ namespace StateCSharp
         public void AWidgetCanDrawAGreenLine()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point start = new Point(5, 0);
-            Point end = new Point(0, 5);
+            var start = new Point(5, 0);
+            var end = new Point(0, 5);
 
             w.MouseMove(start);
             w.CtrlKeyDown();
@@ -50,10 +50,10 @@ namespace StateCSharp
         public void PressingControlAfterStartingALineDoesntMakeItGreen()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point start = new Point(5, 0);
-            Point end = new Point(0, 5);
+            var start = new Point(5, 0);
+            var end = new Point(0, 5);
 
             w.MouseMove(start);
             w.MouseDown();
@@ -67,9 +67,9 @@ namespace StateCSharp
         public void ClickingDrawsAPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p = new Point(5, 5);
+            var p = new Point(5, 5);
 
             w.MouseMove(p);
             w.MouseDown();
@@ -82,9 +82,9 @@ namespace StateCSharp
         public void ClickingWithControlDrawsAGreenPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p = new Point(5, 5);
+            var p = new Point(5, 5);
 
             w.CtrlKeyDown();
             w.MouseMove(p);
@@ -98,9 +98,9 @@ namespace StateCSharp
         public void ClickingWithControlAfterMovingDrawsAGreenPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p = new Point(5, 5);
+            var p = new Point(5, 5);
 
             w.MouseMove(p);
             w.CtrlKeyDown();
@@ -114,9 +114,9 @@ namespace StateCSharp
         public void ClickingThenControlDrawsARedPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p = new Point(5, 5);
+            var p = new Point(5, 5);
 
             w.MouseMove(p);
             w.MouseDown();
@@ -130,12 +130,12 @@ namespace StateCSharp
         public void CanDragToMakeMultipleLines()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(0, 1);
-            Point p3 = new Point(1, 1);
-            Point p4 = new Point(5, 5);
+            var p1 = new Point(0, 0);
+            var p2 = new Point(0, 1);
+            var p3 = new Point(1, 1);
+            var p4 = new Point(5, 5);
 
             w.MouseMove(p1);
             w.MouseDown();
@@ -152,12 +152,12 @@ namespace StateCSharp
         public void CanPressControlAndDragToMakeMultipleGreenLines()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(0, 1);
-            Point p3 = new Point(1, 1);
-            Point p4 = new Point(5, 5);
+            var p1 = new Point(0, 0);
+            var p2 = new Point(0, 1);
+            var p3 = new Point(1, 1);
+            var p4 = new Point(5, 5);
 
             w.CtrlKeyDown();
             w.MouseMove(p1);
@@ -175,12 +175,12 @@ namespace StateCSharp
         public void CanDragTwiceToMakeTwoLines()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(0, 1);
-            Point p3 = new Point(1, 1);
-            Point p4 = new Point(5, 5);
+            var p1 = new Point(0, 0);
+            var p2 = new Point(0, 1);
+            var p3 = new Point(1, 1);
+            var p4 = new Point(5, 5);
 
             w.MouseMove(p1);
             w.MouseDown();
@@ -200,12 +200,12 @@ namespace StateCSharp
         public void CanDragTwiceWithControlDownToMakeTwoGreenLines()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(0, 1);
-            Point p3 = new Point(1, 1);
-            Point p4 = new Point(5, 5);
+            var p1 = new Point(0, 0);
+            var p2 = new Point(0, 1);
+            var p3 = new Point(1, 1);
+            var p4 = new Point(5, 5);
 
             w.CtrlKeyDown();
             w.MouseMove(p1);
@@ -226,12 +226,12 @@ namespace StateCSharp
         public void ICanDragToMakeOneRedAndOneGreenLine()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(0, 1);
-            Point p3 = new Point(1, 1);
-            Point p4 = new Point(5, 5);
+            var p1 = new Point(0, 0);
+            var p2 = new Point(0, 1);
+            var p3 = new Point(1, 1);
+            var p4 = new Point(5, 5);
 
             w.MouseMove(p1);
             w.MouseDown();
@@ -252,12 +252,12 @@ namespace StateCSharp
         public void ICanDragToMakeOneGreenAndOneRedLine()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(0, 1);
-            Point p3 = new Point(1, 1);
-            Point p4 = new Point(5, 5);
+            var p1 = new Point(0, 0);
+            var p2 = new Point(0, 1);
+            var p3 = new Point(1, 1);
+            var p4 = new Point(5, 5);
 
             w.CtrlKeyDown();
             w.MouseMove(p1);
@@ -279,12 +279,12 @@ namespace StateCSharp
         public void ICanDragToMakeOneGreenAndOneRedLineReleasingTheControlKeyEarly()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(0, 1);
-            Point p3 = new Point(1, 1);
-            Point p4 = new Point(5, 5);
+            var p1 = new Point(0, 0);
+            var p2 = new Point(0, 1);
+            var p3 = new Point(1, 1);
+            var p4 = new Point(5, 5);
 
             w.CtrlKeyDown();
             w.MouseMove(p1);
@@ -306,10 +306,10 @@ namespace StateCSharp
         public void ClickingTwiceDrawsTwoPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(5, 5);
-            Point p2 = new Point(10, 20);
+            var p1 = new Point(5, 5);
+            var p2 = new Point(10, 20);
 
             w.MouseMove(p1);
             w.MouseDown();
@@ -327,10 +327,10 @@ namespace StateCSharp
         public void ClickingTwiceWithControlDrawsTwoGreenPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(5, 5);
-            Point p2 = new Point(10, 20);
+            var p1 = new Point(5, 5);
+            var p2 = new Point(10, 20);
 
             w.MouseMove(p1);
             w.CtrlKeyDown();
@@ -350,10 +350,10 @@ namespace StateCSharp
         public void ICanCreateOneRedAndOneGreenPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(5, 5);
-            Point p2 = new Point(10, 20);
+            var p1 = new Point(5, 5);
+            var p2 = new Point(10, 20);
 
             w.MouseMove(p1);
             w.MouseDown();
@@ -372,10 +372,10 @@ namespace StateCSharp
         public void ICanCreateOneGreenAndOneRedPoint()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(5, 5);
-            Point p2 = new Point(10, 20);
+            var p1 = new Point(5, 5);
+            var p2 = new Point(10, 20);
 
             w.MouseMove(p1);
             w.CtrlKeyDown();
@@ -395,13 +395,13 @@ namespace StateCSharp
         public void CanCreateLotsOfPointsAndLines()
         {
             var c = new Mock<ICanvas>();
-            Widget w = new Widget(c.Object);
+            var w = new Widget(c.Object);
 
-            Point p1 = new Point(5, 5);
-            Point p2 = new Point(10, 20);
-            Point p3 = new Point(29, 12);
-            Point p4 = new Point(-5, 8);
-            Point p5 = new Point(3, 7);
+            var p1 = new Point(5, 5);
+            var p2 = new Point(10, 20);
+            var p3 = new Point(29, 12);
+            var p4 = new Point(-5, 8);
+            var p5 = new Point(3, 7);
 
             // Click
             w.MouseMove(p1);

@@ -2,13 +2,13 @@ namespace StateCSharp
 {
     public struct Point
     {
-        public int X;
-        public int Y;
+        private int _x;
+        private int _y;
 
         public Point(int i, int j)
         {
-            X = i;
-            Y = j;
+            _x = i;
+            _y = j;
         }
     }
 }
