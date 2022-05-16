@@ -11,9 +11,14 @@ heading{
 
 ## <heading>Introduction</heading>
 
-This kata is designed to help you learn how to refactor to the State pattern (https://refactoring.guru/design-patterns/state)
+This kata is designed to help you learn how to refactor to the State pattern.
 
 There is a class called Widget, which has complicated state transitions, and different behaviour in each state. 
+
+A Widget can receive mouse messages, such as MouseMove, or MouseDown, and it notes the current state of the mouse, and draws lines on a canvas in response to the mouse actions.
+
+The state logic is compicated, and could be better expressed as the State Pattern. Have a look here: https://refactoring.guru/design-patterns/state.
+
 Your goal is to create classes for each state, and to move the logic into these classes.
 
 There are existing tests which should be comprehensive enough to give you a safety harness as you refactor.
@@ -22,7 +27,9 @@ You should be able to refactor in small incremental steps, and make sure that th
 
 ## <heading>Step 1: Call setters/getters instead of private data</heading>
 
-Create Set/Get methods for all private data on Widget. Use these methods instead of directly accessing the private data.
+Create private Set/Get methods for all private data on Widget. Use these methods instead of directly accessing the private data.
+
+<label>Compile and run the tests. Commit if they pass.</label>
 
 ## <heading>Step 2: Create a State base class</heading>
 
@@ -46,27 +53,29 @@ Replace the logic in Widget with calls to the IState member.
 
 ## <heading>Step 4: Replace type code with objects</heading>
 
-In IState, change IState to have a MouseState member, and remove it from Widget.
+Change DefaultState to have a MouseState member, and remove it from Widget.
+
+Add MouseState Getters/Setters to IState and implement them in DefaultState.
 
 Update the constructor for DefaultState to take in the MouseState.
 
-Change the get function in Widget to get the MouseState from the IState that it owns. 
+Change the GetState function in Widget to get the MouseState from the IState that it owns. 
 
-Change the set function in Widget with a function that sets the MouseState on the IState that it owns.
+Change the SetState function in Widget with a function that sets the MouseState on the IState that it owns.
 
 <label>Compile and run the tests. Commit if they pass.</label>
 
 Replace the set function with one that takes in an IState and replaces the IState member.
 
-In DefaultState, change calls to set the MouseState, to instead construct a new DefaultState with the appropriate MouseState, and set the new DefaultState on the widget.
+In DefaultState, change calls that set the MouseState to instead construct a new DefaultState with the appropriate MouseState, and set the new DefaultState on the widget.
 
 <label>Compile and run the tests. Commit if they pass.</label>
 
 ## <heading>Step 5: Create derived State classes</heading>
 
-Create six implementations of IState: one for each value of MouseState.
+Create six implementations of IState: one for each value of MouseState. Do this by deriving from DefaultState
 
-The constructors should take no argument, but should provide the relevant MouseState value to the IState base class.
+The constructors should take no argument, but should provide the relevant MouseState value to the base class.
 
 <label>Compile and run the tests. Commit if they pass.</label>
 
@@ -111,7 +120,7 @@ You can now remove the MouseState enum and the MouseState member variables.
 
 ## <heading>Step 8: Consider a base class</heading>
 
-If you're in a language like C#, then you have to implement all of the methods on an interface. But many of the state classes now have empty methods. You could consider making all state classes inherit from a base class which in turn implements the IState interface. Bu default, this base class could implement all of the methods to do nothing. This will tidy up the individual State classes.
+If you're in a language like C#, then you have to implement all of the methods on an interface. But many of the state classes now have empty methods. You could consider making all state classes inherit from a base class which in turn implements the IState interface. By default, this base class could implement all of the methods to do nothing. This will tidy up the individual State classes.
 
 ## <heading>Step 9: Apply the Law Of Demeter</heading>
 
