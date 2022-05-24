@@ -1,6 +1,6 @@
 namespace StateCSharp
 {
-    public enum MouseState
+    public enum Mouse
     {
         MouseUp,
         MouseDown,
