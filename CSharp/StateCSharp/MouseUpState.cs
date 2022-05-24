@@ -17,5 +17,4 @@ internal class MouseUpState : IState
         widget.StartPoint = point;
         return this;
     }
-    
 }
