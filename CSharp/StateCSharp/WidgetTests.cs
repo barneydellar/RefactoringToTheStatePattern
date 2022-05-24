@@ -10,7 +10,7 @@ public class WidgetTests
     public void AWidgetCanBeCreated()
     {
         var c = new MockCanvas();
-        var w = new Widget(c);
+        var unused = new Widget(c);
     }
 
     [Test]
