@@ -1,110 +1,109 @@
-namespace StateCSharp
+namespace StateCSharp;
+
+public class Widget
 {
-    public class Widget
+    private readonly ICanvas _canvas;
+    private Mouse _mouse = Mouse.Up;
+    private Point _startP;
+
+    public Widget(ICanvas canvas)
     {
-        private readonly ICanvas _canvas;
-        private Mouse _mouse = Mouse.MouseUp;
-        private Point _startP;
+        _canvas = canvas;
+    }
 
-        public Widget(ICanvas canvas)
+    public void MouseMove(Point point)
+    {
+        if (_mouse == Mouse.Up)
         {
-            _canvas = canvas;
+            _startP = point;
         }
 
-        public void MouseMove(Point point)
+        if (_mouse == Mouse.UpWithCtrlDown)
         {
-            if (_mouse == Mouse.MouseUp)
-            {
-                _startP = point;
-            }
-
-            if (_mouse == Mouse.MouseUpWithCtrlDown)
-            {
-                _startP = point;
-            }
-            else if (_mouse == Mouse.MouseDown)
-            {
-                _mouse = Mouse.MouseDragging;
-            }
-
-            if (_mouse == Mouse.MouseDownWithCtrlDown)
-            {
-                _mouse = Mouse.MouseDraggingWithCtrlDown;
-            }
-
-            if (_mouse == Mouse.MouseDragging)
-            {
-                _canvas.DrawLine(_startP, point, Colour.Red);
-                _startP = point;
-            }
-
-            if (_mouse == Mouse.MouseDraggingWithCtrlDown)
-            {
-                _canvas.DrawLine(_startP, point, Colour.Green);
-                _startP = point;
-            }
+            _startP = point;
+        }
+        else if (_mouse == Mouse.Down)
+        {
+            _mouse = Mouse.Dragging;
         }
 
-        public void MouseDown()
+        if (_mouse == Mouse.DownWithCtrlDown)
         {
-            if (_mouse == Mouse.MouseUp)
-            {
-                _mouse = Mouse.MouseDown;
-            }
-
-            if (_mouse == Mouse.MouseUpWithCtrlDown)
-            {
-                _mouse = Mouse.MouseDownWithCtrlDown;
-            }
+            _mouse = Mouse.DraggingWithCtrlDown;
         }
 
-        public void CtrlKeyDown()
+        if (_mouse == Mouse.Dragging)
         {
-            if (_mouse == Mouse.MouseUp)
-            {
-                _mouse = Mouse.MouseUpWithCtrlDown;
-            }
+            _canvas.DrawLine(_startP, point, Colour.Red);
+            _startP = point;
         }
 
-        public void MouseUp()
+        if (_mouse == Mouse.DraggingWithCtrlDown)
         {
-            if (_mouse == Mouse.MouseDownWithCtrlDown)
-            {
-                _canvas.DrawPoint(_startP, Colour.Green);
-            }
-            else if (_mouse == Mouse.MouseDown)
-            {
-                _canvas.DrawPoint(_startP, Colour.Red);
-            }
+            _canvas.DrawLine(_startP, point, Colour.Green);
+            _startP = point;
+        }
+    }
 
-            if (_mouse == Mouse.MouseDown || _mouse == Mouse.MouseDragging)
-            {
-                _mouse = Mouse.MouseUp;
-            }
-
-            if (_mouse == Mouse.MouseDownWithCtrlDown ||
-                _mouse == Mouse.MouseDraggingWithCtrlDown)
-            {
-                _mouse = Mouse.MouseUpWithCtrlDown;
-            }
+    public void MouseDown()
+    {
+        if (_mouse == Mouse.Up)
+        {
+            _mouse = Mouse.Down;
         }
 
-        public void CtrlKeyUp()
+        if (_mouse == Mouse.UpWithCtrlDown)
         {
-            {
-                if (_mouse == Mouse.MouseUpWithCtrlDown)
-                {
-                    _mouse = Mouse.MouseUp;
-                }
-                else if (_mouse == Mouse.MouseDraggingWithCtrlDown)
-                {
-                    _mouse = Mouse.MouseDragging;
-                }
+            _mouse = Mouse.DownWithCtrlDown;
+        }
+    }
 
-                if (_mouse == Mouse.MouseDownWithCtrlDown)
-                {
-                    _mouse = Mouse.MouseDown;
-                }
+    public void CtrlKeyDown()
+    {
+        if (_mouse == Mouse.Up)
+        {
+            _mouse = Mouse.UpWithCtrlDown;
+        }
+    }
+
+    public void MouseUp()
+    {
+        if (_mouse == Mouse.DownWithCtrlDown)
+        {
+            _canvas.DrawPoint(_startP, Colour.Green);
+        }
+        else if (_mouse == Mouse.Down)
+        {
+            _canvas.DrawPoint(_startP, Colour.Red);
+        }
+
+        if (_mouse == Mouse.Down || _mouse == Mouse.Dragging)
+        {
+            _mouse = Mouse.Up;
+        }
+
+        if (_mouse == Mouse.DownWithCtrlDown ||
+            _mouse == Mouse.DraggingWithCtrlDown)
+        {
+            _mouse = Mouse.UpWithCtrlDown;
+        }
+    }
+
+    public void CtrlKeyUp()
+    {
+        {
+            if (_mouse == Mouse.UpWithCtrlDown)
+            {
+                _mouse = Mouse.Up;
+            }
+            else if (_mouse == Mouse.DraggingWithCtrlDown)
+            {
+                _mouse = Mouse.Dragging;
+            }
+
+            if (_mouse == Mouse.DownWithCtrlDown)
+            {
+                _mouse = Mouse.Down;
             }
         }
     }

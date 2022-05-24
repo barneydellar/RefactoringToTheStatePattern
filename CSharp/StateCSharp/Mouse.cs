@@ -1,12 +1,11 @@
-namespace StateCSharp
+namespace StateCSharp;
+
+public enum Mouse
 {
-    public enum Mouse
-    {
-        MouseUp,
-        MouseDown,
-        MouseDragging,
-        MouseUpWithCtrlDown,
-        MouseDownWithCtrlDown,
-        MouseDraggingWithCtrlDown,
-    };
-}
+    Up,
+    Down,
+    Dragging,
+    UpWithCtrlDown,
+    DownWithCtrlDown,
+    DraggingWithCtrlDown,
+};

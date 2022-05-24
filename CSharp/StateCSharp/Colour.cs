@@ -1,8 +1,7 @@
-namespace StateCSharp
+namespace StateCSharp;
+
+public enum Colour
 {
-    public enum Colour
-    {
-        Red,
-        Green
-    };
-}
+    Red,
+    Green
+};
