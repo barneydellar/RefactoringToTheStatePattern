@@ -18,7 +18,7 @@ You should be able to refactor in small incremental steps, and make sure that th
 
 ## <heading>Step 1: Call setters/getters instead of private data</heading>
 
-Create private Set/Get methods for all private data on Widget. Use these methods instead of directly accessing the private data.
+Create public Set/Get methods for all private data on Widget. Use these methods instead of directly accessing the private data.
 
 **Compile and run the tests. Commit if they pass.**
 
@@ -32,7 +32,7 @@ Create an implementation of IState, called something like DefaultState.
 
 ## <heading>Step 3: Move logic into States</heading>
 
-In Widget, create a member pointer to an IState, and initialise it to point to an instance of DefaultState. 
+In Widget, create an IState member, and initialise it to point to an instance of DefaultState. 
 
 **Compile and run the tests. Commit if they pass.**
 
@@ -50,13 +50,13 @@ Add Mouse Getters/Setters to IState and implement them in DefaultState.
 
 Update the constructor for DefaultState to take in the Mouse.
 
-Change the GetState function in Widget to get the Mouse from the IState that it owns. 
+Change the Mouse getter function in Widget to get the Mouse from the IState that it owns. 
 
-Change the SetState function in Widget with a function that sets the Mouse on the IState that it owns.
+Change the Mouse setter function in Widget with a function that sets the Mouse on the IState that it owns.
 
 **Compile and run the tests. Commit if they pass.**
 
-Replace the set function with one that takes in an IState and replaces the IState member.
+Replace the Mouse setter function with one that takes in an IState and replaces the IState member.
 
 In DefaultState, change calls that set the Mouse to instead construct a new DefaultState with the appropriate Mouse, and set the new DefaultState on the widget.
 
