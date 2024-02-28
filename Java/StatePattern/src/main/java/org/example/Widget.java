@@ -6,7 +6,7 @@ public class Widget {
         this.canvas = canvas;
     }
 
-    private ICanvas canvas;
+    private final ICanvas canvas;
     private Mouse mouse = Mouse.Up;
     private Point startP;
 
