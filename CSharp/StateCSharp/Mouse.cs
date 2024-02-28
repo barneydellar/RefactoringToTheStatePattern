@@ -8,4 +8,4 @@ public enum Mouse
     UpWithCtrlDown,
     DownWithCtrlDown,
     DraggingWithCtrlDown,
-};
+}

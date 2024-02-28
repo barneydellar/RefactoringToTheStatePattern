@@ -4,4 +4,4 @@ public enum Colour
 {
     Red,
     Green
-};
+}
