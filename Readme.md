@@ -6,9 +6,11 @@ This kata is designed to help you learn how to refactor to the State pattern.
 
 There is a class called Widget, which has complicated state transitions, and different behaviour in each state. 
 
-A Widget can receive mouse messages, such as MouseMove, or MouseDown, and it notes the current state of the mouse, and draws lines on a canvas in response to the mouse actions.
+A Widget can receive mouse messages, such as MouseMove, or MouseDown, and it notes the current state of the mouse, and 
+draws lines on a canvas in response to the mouse actions.
 
-The state logic is complicated, and could be better expressed as the State Pattern. Have a look here: https://refactoring.guru/design-patterns/state.
+The state logic is complicated, and could be better expressed as the State Pattern. 
+Have a look here: https://refactoring.guru/design-patterns/state.
 
 Your goal is to create classes for each state, and to move the logic into these classes.
 
@@ -18,13 +20,15 @@ You should be able to refactor in small incremental steps, and make sure that th
 
 ## <heading>Step 1: Call setters/getters instead of private data</heading>
 
-Create public Set/Get methods for all private data on Widget. Use these methods instead of directly accessing the private data.
+Create public Set/Get methods for all private data on Widget. Use these methods instead of directly accessing the 
+private data.
 
 **Compile and run the tests. Commit if they pass.**
 
 ## <heading>Step 2: Create a State base class</heading>
 
-Create a new IState interface. This should have the same public API as Widget, except that each function will also take in a reference to the Widget.
+Create a new IState interface. This should have the same public API as Widget, except that each function will also take 
+in a reference to the Widget.
 
 Create an implementation of IState, called something like DefaultState.
 
@@ -44,7 +48,7 @@ Replace the logic in Widget with calls to the IState member.
 
 ## <heading>Step 4: Replace type code with objects</heading>
 
-Change DefaultState to have a Mouse member, and remove it from Widget.
+Change DefaultState to have a Mouse member, and remove it from Widget. But keep the Mouse getters/setters in Widget.
 
 Add Mouse Getters/Setters to IState and implement them in DefaultState.
 
@@ -54,11 +58,15 @@ Change the Mouse getter function in Widget to get the Mouse from the IState that
 
 Change the Mouse setter function in Widget with a function that sets the Mouse on the IState that it owns.
 
+At this point, when the DefaultState needs the Mouse value, it should ask the Widget, which should ask back to the 
+DefaultState. This might seem wrong, but it's a useful step.
+
 **Compile and run the tests. Commit if they pass.**
 
 Replace the Mouse setter function with one that takes in an IState and replaces the IState member.
 
-In DefaultState, change calls that set the Mouse to instead construct a new DefaultState with the appropriate Mouse, and set the new DefaultState on the widget.
+In DefaultState, change calls that set the Mouse to instead construct a new DefaultState with the appropriate Mouse, 
+and set the new DefaultState on the widget.
 
 **Compile and run the tests. Commit if they pass.**
 
@@ -90,7 +98,8 @@ void MouseDown(Widget widget) {
 }
 ```
 
-Move this logic into the derived class. In this case, create an override implementation of MouseDown() in the derived MouseUp class, and move just the code that sets the mouse state into it.
+Move this logic into the derived class. In this case, create an override implementation of MouseDown() in the derived 
+MouseUp class, and move just the code that sets the mouse state into it.
 
 ```cpp
 // MouseUpState
@@ -101,7 +110,8 @@ void MouseDown(Widget) {
 
 **Compile and run tests** after each change.
 
-Be warned that some of the conditional logic is entangled. For example, it might change the state, and then later in the same function, see if the state is now in that new state and do some more logic.
+Be warned that some of the conditional logic is entangled. For example, it might change the state, and then later in 
+the same function, see if the state is now in that new state and do some more logic.
 
 You should end up with the methods in DefaultState completely empty, and it should now be unused, so delete it. 
 
