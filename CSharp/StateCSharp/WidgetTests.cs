@@ -1,5 +1,6 @@
 using Moq;
 using NUnit.Framework;
+// ReSharper disable UnusedVariable
 
 namespace StateCSharp;
 

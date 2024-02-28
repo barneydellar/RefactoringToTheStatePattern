@@ -1,109 +1,101 @@
 namespace StateCSharp;
 
-public class Widget
+public class Widget(ICanvas canvas)
 {
-    private readonly ICanvas _canvas;
-    private Mouse _mouse = Mouse.Up;
-    private Point _startP;
-
-    public Widget(ICanvas canvas)
-    {
-        _canvas = canvas;
-    }
+    private Mouse mouse = Mouse.Up;
+    private Point startP;
 
     public void MouseMove(Point point)
     {
-        if (_mouse == Mouse.Up)
+        if (mouse == Mouse.Up)
         {
-            _startP = point;
+            startP = point;
         }
 
-        if (_mouse == Mouse.UpWithCtrlDown)
+        if (mouse == Mouse.UpWithCtrlDown)
         {
-            _startP = point;
+            startP = point;
         }
-        else if (_mouse == Mouse.Down)
+        else if (mouse == Mouse.Down)
         {
-            _mouse = Mouse.Dragging;
-        }
-
-        if (_mouse == Mouse.DownWithCtrlDown)
-        {
-            _mouse = Mouse.DraggingWithCtrlDown;
+            mouse = Mouse.Dragging;
         }
 
-        if (_mouse == Mouse.Dragging)
+        if (mouse == Mouse.DownWithCtrlDown)
         {
-            _canvas.DrawLine(_startP, point, Colour.Red);
-            _startP = point;
+            mouse = Mouse.DraggingWithCtrlDown;
         }
 
-        if (_mouse == Mouse.DraggingWithCtrlDown)
+        if (mouse == Mouse.Dragging)
         {
-            _canvas.DrawLine(_startP, point, Colour.Green);
-            _startP = point;
+            canvas.DrawLine(startP, point, Colour.Red);
+            startP = point;
+        }
+
+        if (mouse == Mouse.DraggingWithCtrlDown)
+        {
+            canvas.DrawLine(startP, point, Colour.Green);
+            startP = point;
         }
     }
 
     public void MouseDown()
     {
-        if (_mouse == Mouse.Up)
+        if (mouse == Mouse.Up)
         {
-            _mouse = Mouse.Down;
+            mouse = Mouse.Down;
         }
 
-        if (_mouse == Mouse.UpWithCtrlDown)
+        if (mouse == Mouse.UpWithCtrlDown)
         {
-            _mouse = Mouse.DownWithCtrlDown;
+            mouse = Mouse.DownWithCtrlDown;
         }
     }
 
     public void CtrlKeyDown()
     {
-        if (_mouse == Mouse.Up)
+        if (mouse == Mouse.Up)
         {
-            _mouse = Mouse.UpWithCtrlDown;
+            mouse = Mouse.UpWithCtrlDown;
         }
     }
 
     public void MouseUp()
     {
-        if (_mouse == Mouse.DownWithCtrlDown)
+        switch (mouse)
         {
-            _canvas.DrawPoint(_startP, Colour.Green);
-        }
-        else if (_mouse == Mouse.Down)
-        {
-            _canvas.DrawPoint(_startP, Colour.Red);
-        }
-
-        if (_mouse == Mouse.Down || _mouse == Mouse.Dragging)
-        {
-            _mouse = Mouse.Up;
+            case Mouse.DownWithCtrlDown:
+                canvas.DrawPoint(startP, Colour.Green);
+                break;
+            case Mouse.Down:
+                canvas.DrawPoint(startP, Colour.Red);
+                break;
         }
 
-        if (_mouse == Mouse.DownWithCtrlDown ||
-            _mouse == Mouse.DraggingWithCtrlDown)
+        if (mouse is Mouse.Down or Mouse.Dragging)
         {
-            _mouse = Mouse.UpWithCtrlDown;
+            mouse = Mouse.Up;
+        }
+
+        if (mouse == Mouse.DownWithCtrlDown || mouse == Mouse.DraggingWithCtrlDown)
+        {
+            mouse = Mouse.UpWithCtrlDown;
         }
     }
 
     public void CtrlKeyUp()
     {
         {
-            if (_mouse == Mouse.UpWithCtrlDown)
+            mouse = mouse switch
             {
-                _mouse = Mouse.Up;
-            }
-            else if (_mouse == Mouse.DraggingWithCtrlDown)
-            {
-                _mouse = Mouse.Dragging;
-            }
+                Mouse.UpWithCtrlDown => Mouse.Up,
+                Mouse.DraggingWithCtrlDown => Mouse.Dragging,
+                _ => mouse
+            };
 
-            if (_mouse == Mouse.DownWithCtrlDown)
+            if (mouse == Mouse.DownWithCtrlDown)
             {
-                _mouse = Mouse.Down;
+                mouse = Mouse.Down;
             }
         }
     }
