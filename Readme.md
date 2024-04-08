@@ -63,10 +63,12 @@ DefaultState. This might seem wrong, but it's a useful step.
 
 **Compile and run the tests. Commit if they pass.**
 
-Replace the Mouse setter function with one that takes in an IState and replaces the IState member.
+On Widget, create a new function that takes in an IState and replaces the IState member.
 
 In DefaultState, change calls that set the Mouse to instead construct a new DefaultState with the appropriate Mouse, 
-and set the new DefaultState on the widget.
+and set the new DefaultState on the widget using the new method.
+
+Remove the mouse setter when you are done.
 
 **Compile and run the tests. Commit if they pass.**
 
