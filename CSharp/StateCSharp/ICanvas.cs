@@ -1,3 +1,4 @@
+// ReSharper disable UnusedParameter.Global
 namespace StateCSharp;
 
 public interface ICanvas

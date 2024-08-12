@@ -7,5 +7,5 @@ public enum Mouse
     Dragging,
     UpWithCtrlDown,
     DownWithCtrlDown,
-    DraggingWithCtrlDown,
+    DraggingWithCtrlDown
 }

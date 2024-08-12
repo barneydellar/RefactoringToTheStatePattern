@@ -1,8 +1,6 @@
 using Moq;
 using NUnit.Framework;
 
-// ReSharper disable UnusedVariable
-
 namespace StateCSharp;
 
 public class WidgetTests
@@ -12,7 +10,7 @@ public class WidgetTests
     public void AWidgetCanBeCreated()
     {
         var c = new MockCanvas();
-        var w = new Widget(c);
+        _ = new Widget(c);
     }
 
     [Test]
