@@ -1,9 +1,15 @@
 namespace StateCSharp;
 
-public class Widget(ICanvas canvas)
+public class Widget
 {
     private Mouse mouse = Mouse.Up;
     private Point startP;
+    private readonly ICanvas canvas;
+
+    public Widget(ICanvas canvas)
+    {
+        this.canvas = canvas;
+    }
 
     public void MouseMove(Point point)
     {
