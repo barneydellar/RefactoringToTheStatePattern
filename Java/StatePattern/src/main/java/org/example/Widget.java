@@ -10,7 +10,7 @@ public class Widget {
     private Mouse mouse = Mouse.Up;
     private Point startP;
 
-    public void MouseMove(Point point)
+    public void mouseMove(Point point)
     {
         if (mouse == Mouse.Up)
         {
@@ -33,18 +33,18 @@ public class Widget {
 
         if (mouse == Mouse.Dragging)
         {
-            canvas.DrawLine(startP, point, Colour.Red);
+            canvas.drawLine(startP, point, Colour.Red);
             startP = point;
         }
 
         if (mouse == Mouse.DraggingWithCtrlDown)
         {
-            canvas.DrawLine(startP, point, Colour.Green);
+            canvas.drawLine(startP, point, Colour.Green);
             startP = point;
         }
     }
 
-    public void MouseDown()
+    public void mouseDown()
     {
         if (mouse == Mouse.Up)
         {
@@ -57,7 +57,7 @@ public class Widget {
         }
     }
 
-    public void CtrlKeyDown()
+    public void ctrlKeyDown()
     {
         if (mouse == Mouse.Up)
         {
@@ -65,15 +65,15 @@ public class Widget {
         }
     }
 
-    public void MouseUp()
+    public void mouseUp()
     {
         switch (mouse)
         {
             case DownWithCtrlDown:
-                canvas.DrawPoint(startP, Colour.Green);
+                canvas.drawPoint(startP, Colour.Green);
                 break;
             case Down:
-                canvas.DrawPoint(startP, Colour.Red);
+                canvas.drawPoint(startP, Colour.Red);
                 break;
         }
 
@@ -88,7 +88,7 @@ public class Widget {
         }
     }
 
-    public void CtrlKeyUp()
+    public void ctrlKeyUp()
     {
         {
             switch (mouse)

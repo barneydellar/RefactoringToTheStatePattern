@@ -20,11 +20,11 @@ class WidgetTest {
         var start = new Point(10, 10);
         var end = new Point(20, 20);
 
-        w.MouseMove(start);
-        w.MouseDown();
-        w.MouseMove(end);
+        w.mouseMove(start);
+        w.mouseDown();
+        w.mouseMove(end);
 
-        verify(c, times(1)).DrawLine(start, end, Colour.Red);
+        verify(c, times(1)).drawLine(start, end, Colour.Red);
     }
 
     @Test
@@ -36,12 +36,12 @@ class WidgetTest {
         var start = new Point(5, 0);
         var end = new Point(0, 5);
 
-        w.MouseMove(start);
-        w.CtrlKeyDown();
-        w.MouseDown();
-        w.MouseMove(end);
+        w.mouseMove(start);
+        w.ctrlKeyDown();
+        w.mouseDown();
+        w.mouseMove(end);
 
-        verify(c, times(1)).DrawLine(start, end, Colour.Green);
+        verify(c, times(1)).drawLine(start, end, Colour.Green);
     }
 
     @Test
@@ -53,12 +53,12 @@ class WidgetTest {
         var start = new Point(5, 0);
         var end = new Point(0, 5);
 
-        w.MouseMove(start);
-        w.MouseDown();
-        w.CtrlKeyDown();
-        w.MouseMove(end);
+        w.mouseMove(start);
+        w.mouseDown();
+        w.ctrlKeyDown();
+        w.mouseMove(end);
 
-        verify(c, times(1)).DrawLine(start, end, Colour.Red);
+        verify(c, times(1)).drawLine(start, end, Colour.Red);
     }
 
     @Test
@@ -69,11 +69,11 @@ class WidgetTest {
 
         var p = new Point(5, 5);
 
-        w.MouseMove(p);
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p);
+        w.mouseDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p, Colour.Red);
+        verify(c, times(1)).drawPoint(p, Colour.Red);
     }
 
     @Test
@@ -84,12 +84,12 @@ class WidgetTest {
 
         var p = new Point(5, 5);
 
-        w.CtrlKeyDown();
-        w.MouseMove(p);
-        w.MouseDown();
-        w.MouseUp();
+        w.ctrlKeyDown();
+        w.mouseMove(p);
+        w.mouseDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p, Colour.Green);
+        verify(c, times(1)).drawPoint(p, Colour.Green);
     }
 
     @Test
@@ -100,12 +100,12 @@ class WidgetTest {
 
         var p = new Point(5, 5);
 
-        w.MouseMove(p);
-        w.CtrlKeyDown();
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p);
+        w.ctrlKeyDown();
+        w.mouseDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p, Colour.Green);
+        verify(c, times(1)).drawPoint(p, Colour.Green);
     }
 
     @Test
@@ -116,12 +116,12 @@ class WidgetTest {
 
         var p = new Point(5, 5);
 
-        w.MouseMove(p);
-        w.MouseDown();
-        w.CtrlKeyDown();
-        w.MouseUp();
+        w.mouseMove(p);
+        w.mouseDown();
+        w.ctrlKeyDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p, Colour.Red);
+        verify(c, times(1)).drawPoint(p, Colour.Red);
     }
 
     @Test
@@ -135,15 +135,15 @@ class WidgetTest {
         var p3 = new Point(1, 1);
         var p4 = new Point(5, 5);
 
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseMove(p2);
-        w.MouseMove(p3);
-        w.MouseMove(p4);
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseMove(p2);
+        w.mouseMove(p3);
+        w.mouseMove(p4);
 
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Red);
-        verify(c, times(1)).DrawLine(p2, p3, Colour.Red);
-        verify(c, times(1)).DrawLine(p3, p4, Colour.Red);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Red);
+        verify(c, times(1)).drawLine(p2, p3, Colour.Red);
+        verify(c, times(1)).drawLine(p3, p4, Colour.Red);
     }
 
     @Test
@@ -157,16 +157,16 @@ class WidgetTest {
         var p3 = new Point(1, 1);
         var p4 = new Point(5, 5);
 
-        w.CtrlKeyDown();
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseMove(p2);
-        w.MouseMove(p3);
-        w.MouseMove(p4);
+        w.ctrlKeyDown();
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseMove(p2);
+        w.mouseMove(p3);
+        w.mouseMove(p4);
 
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Green);
-        verify(c, times(1)).DrawLine(p2, p3, Colour.Green);
-        verify(c, times(1)).DrawLine(p3, p4, Colour.Green);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Green);
+        verify(c, times(1)).drawLine(p2, p3, Colour.Green);
+        verify(c, times(1)).drawLine(p3, p4, Colour.Green);
     }
 
     @Test
@@ -180,18 +180,18 @@ class WidgetTest {
         var p3 = new Point(1, 1);
         var p4 = new Point(5, 5);
 
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseMove(p2);
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseMove(p2);
 
-        w.MouseUp();
+        w.mouseUp();
 
-        w.MouseMove(p3);
-        w.MouseDown();
-        w.MouseMove(p4);
+        w.mouseMove(p3);
+        w.mouseDown();
+        w.mouseMove(p4);
 
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Red);
-        verify(c, times(1)).DrawLine(p3, p4, Colour.Red);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Red);
+        verify(c, times(1)).drawLine(p3, p4, Colour.Red);
     }
 
     @Test
@@ -205,19 +205,19 @@ class WidgetTest {
         var p3 = new Point(1, 1);
         var p4 = new Point(5, 5);
 
-        w.CtrlKeyDown();
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseMove(p2);
+        w.ctrlKeyDown();
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseMove(p2);
 
-        w.MouseUp();
+        w.mouseUp();
 
-        w.MouseMove(p3);
-        w.MouseDown();
-        w.MouseMove(p4);
+        w.mouseMove(p3);
+        w.mouseDown();
+        w.mouseMove(p4);
 
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Green);
-        verify(c, times(1)).DrawLine(p3, p4, Colour.Green);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Green);
+        verify(c, times(1)).drawLine(p3, p4, Colour.Green);
     }
 
     @Test
@@ -231,19 +231,19 @@ class WidgetTest {
         var p3 = new Point(1, 1);
         var p4 = new Point(5, 5);
 
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseMove(p2);
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseMove(p2);
 
-        w.MouseUp();
-        w.CtrlKeyDown();
+        w.mouseUp();
+        w.ctrlKeyDown();
 
-        w.MouseMove(p3);
-        w.MouseDown();
-        w.MouseMove(p4);
+        w.mouseMove(p3);
+        w.mouseDown();
+        w.mouseMove(p4);
 
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Red);
-        verify(c, times(1)).DrawLine(p3, p4, Colour.Green);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Red);
+        verify(c, times(1)).drawLine(p3, p4, Colour.Green);
     }
 
     @Test
@@ -257,20 +257,20 @@ class WidgetTest {
         var p3 = new Point(1, 1);
         var p4 = new Point(5, 5);
 
-        w.CtrlKeyDown();
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseMove(p2);
+        w.ctrlKeyDown();
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseMove(p2);
 
-        w.MouseUp();
-        w.CtrlKeyUp();
+        w.mouseUp();
+        w.ctrlKeyUp();
 
-        w.MouseMove(p3);
-        w.MouseDown();
-        w.MouseMove(p4);
+        w.mouseMove(p3);
+        w.mouseDown();
+        w.mouseMove(p4);
 
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Green);
-        verify(c, times(1)).DrawLine(p3, p4, Colour.Red);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Green);
+        verify(c, times(1)).drawLine(p3, p4, Colour.Red);
     }
 
     @Test
@@ -284,20 +284,20 @@ class WidgetTest {
         var p3 = new Point(1, 1);
         var p4 = new Point(5, 5);
 
-        w.CtrlKeyDown();
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseMove(p2);
+        w.ctrlKeyDown();
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseMove(p2);
 
-        w.CtrlKeyUp();
-        w.MouseUp();
+        w.ctrlKeyUp();
+        w.mouseUp();
 
-        w.MouseMove(p3);
-        w.MouseDown();
-        w.MouseMove(p4);
+        w.mouseMove(p3);
+        w.mouseDown();
+        w.mouseMove(p4);
 
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Green);
-        verify(c, times(1)).DrawLine(p3, p4, Colour.Red);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Green);
+        verify(c, times(1)).drawLine(p3, p4, Colour.Red);
     }
 
     @Test
@@ -309,16 +309,16 @@ class WidgetTest {
         var p1 = new Point(5, 5);
         var p2 = new Point(10, 20);
 
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseUp();
 
-        w.MouseMove(p2);
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p2);
+        w.mouseDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p1, Colour.Red);
-        verify(c, times(1)).DrawPoint(p2, Colour.Red);
+        verify(c, times(1)).drawPoint(p1, Colour.Red);
+        verify(c, times(1)).drawPoint(p2, Colour.Red);
     }
 
     @Test
@@ -330,18 +330,18 @@ class WidgetTest {
         var p1 = new Point(5, 5);
         var p2 = new Point(10, 20);
 
-        w.MouseMove(p1);
-        w.CtrlKeyDown();
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p1);
+        w.ctrlKeyDown();
+        w.mouseDown();
+        w.mouseUp();
 
-        w.MouseMove(p2);
-        w.CtrlKeyDown();
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p2);
+        w.ctrlKeyDown();
+        w.mouseDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p1, Colour.Green);
-        verify(c, times(1)).DrawPoint(p2, Colour.Green);
+        verify(c, times(1)).drawPoint(p1, Colour.Green);
+        verify(c, times(1)).drawPoint(p2, Colour.Green);
     }
 
     @Test
@@ -353,17 +353,17 @@ class WidgetTest {
         var p1 = new Point(5, 5);
         var p2 = new Point(10, 20);
 
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseUp();
 
-        w.MouseMove(p2);
-        w.CtrlKeyDown();
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p2);
+        w.ctrlKeyDown();
+        w.mouseDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p1, Colour.Red);
-        verify(c, times(1)).DrawPoint(p2, Colour.Green);
+        verify(c, times(1)).drawPoint(p1, Colour.Red);
+        verify(c, times(1)).drawPoint(p2, Colour.Green);
     }
 
     @Test
@@ -375,18 +375,18 @@ class WidgetTest {
         var p1 = new Point(5, 5);
         var p2 = new Point(10, 20);
 
-        w.MouseMove(p1);
-        w.CtrlKeyDown();
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p1);
+        w.ctrlKeyDown();
+        w.mouseDown();
+        w.mouseUp();
 
-        w.MouseMove(p2);
-        w.CtrlKeyUp();
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p2);
+        w.ctrlKeyUp();
+        w.mouseDown();
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p1, Colour.Green);
-        verify(c, times(1)).DrawPoint(p2, Colour.Red);
+        verify(c, times(1)).drawPoint(p1, Colour.Green);
+        verify(c, times(1)).drawPoint(p2, Colour.Red);
     }
 
     @Test
@@ -402,36 +402,36 @@ class WidgetTest {
         var p5 = new Point(3, 7);
 
         // Click
-        w.MouseMove(p1);
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p1);
+        w.mouseDown();
+        w.mouseUp();
 
-        w.CtrlKeyDown();
+        w.ctrlKeyDown();
 
         // Drag
-        w.MouseDown();
-        w.MouseMove(p2);
-        w.MouseMove(p3);
-        w.MouseUp();
+        w.mouseDown();
+        w.mouseMove(p2);
+        w.mouseMove(p3);
+        w.mouseUp();
 
         // Click
-        w.MouseMove(p4);
-        w.MouseDown();
-        w.MouseUp();
+        w.mouseMove(p4);
+        w.mouseDown();
+        w.mouseUp();
 
-        w.CtrlKeyUp();
-        w.CtrlKeyUp();
+        w.ctrlKeyUp();
+        w.ctrlKeyUp();
 
         // Drag
-        w.MouseDown();
-        w.MouseMove(p5);
-        w.MouseUp();
+        w.mouseDown();
+        w.mouseMove(p5);
+        w.mouseUp();
 
-        verify(c, times(1)).DrawPoint(p1, Colour.Red);
-        verify(c, times(1)).DrawLine(p1, p2, Colour.Green);
-        verify(c, times(1)).DrawLine(p2, p3, Colour.Green);
-        verify(c, times(1)).DrawPoint(p4, Colour.Green);
-        verify(c, times(1)).DrawLine(p4, p5, Colour.Red);
+        verify(c, times(1)).drawPoint(p1, Colour.Red);
+        verify(c, times(1)).drawLine(p1, p2, Colour.Green);
+        verify(c, times(1)).drawLine(p2, p3, Colour.Green);
+        verify(c, times(1)).drawPoint(p4, Colour.Green);
+        verify(c, times(1)).drawLine(p4, p5, Colour.Red);
     }
 
 }
